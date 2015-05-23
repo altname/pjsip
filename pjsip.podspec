@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name         = "pjsip"
-  s.version      = "2.3.0.7"
+  s.version      = "2.4"
   s.summary      = "Open Source SIP, Media and NAT Traversal Library."
   s.homepage     = "http://www.pjsip.org"
   s.author       = 'www.pjsip.org'
-  s.source       = { :git => "https://github.com/chebur/pjsip.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/ichina/pjsip", :tag => "#{s.version}" }
   s.platform     = :ios, '7.0'
   s.description  = <<-DESC
 PJSIP is a free and open source multimedia communication library written in C language implementing standard based protocols such as SIP, SDP, RTP, STUN, TURN, and ICE. It combines signaling protocol (SIP) with rich multimedia framework and NAT traversal functionality into high level API that is portable and suitable for almost any type of systems ranging from desktops, embedded systems, to mobile handsets.
@@ -36,8 +36,7 @@ LICENSE
                           'build/pjproject/src/pjnath/include/**/*',
                           'build/pjproject/src/pjmedia/include/**/*'
 
-  s.vendored_libraries  = 'build/openh264/lib/*.a',
-                          'build/pjproject/src/pjsip/lib/*.a',
+  s.vendored_libraries  = 'build/pjproject/src/pjsip/lib/*.a',
                           'build/pjproject/src/pjlib/lib/*.a',
                           'build/pjproject/src/pjlib-util/lib/*.a',
                           'build/pjproject/src/pjnath/lib/*.a',
@@ -54,8 +53,9 @@ LICENSE
                            'GCC_PREPROCESSOR_DEFINITIONS' => 'PJ_AUTOCONF=1'}
 
   s.dependency            'OpenSSL-Universal', '1.0.1.l'
+  s.dependency            'libopus', '~> 1.1'
   s.frameworks          = 'CFNetwork', 'AudioToolbox', 'AVFoundation', 'CoreMedia'
   s.libraries           = 'stdc++'
-  s.header_mappings_dir = 'build/pjproject-2.3'
+  s.header_mappings_dir = 'build/pjproject-2.4'
   s.requires_arc        = false
 end

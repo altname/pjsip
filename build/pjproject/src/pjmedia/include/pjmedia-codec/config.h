@@ -98,6 +98,14 @@
 
 
 /**
+ * Unless specified otherwise, OPUS codec is not included by default.
+ */
+#ifndef PJMEDIA_HAS_OPUS_CODEC
+#   define PJMEDIA_HAS_OPUS_CODEC    1
+#endif
+
+
+/**
  * Default G.722 codec encoder and decoder level adjustment. The G.722
  * specifies that it uses 14 bit PCM for input and output, while PJMEDIA
  * normally uses 16 bit PCM, so the conversion is done by applying

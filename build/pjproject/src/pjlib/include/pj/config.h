@@ -1,4 +1,4 @@
-/* $Id: config.h 4913 2014-09-03 08:39:58Z nanang $ */
+/* $Id: config.h 5062 2015-04-13 02:45:03Z ming $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -245,7 +245,7 @@
 #   define PJ_M_NAME		"armv4"
 #   define PJ_HAS_PENTIUM	0
 #   if !PJ_IS_LITTLE_ENDIAN && !PJ_IS_BIG_ENDIAN
-#   	error Endianness must be declared for this processor
+//#   	error Endianness must be declared for this processor
 #   endif
 
 #elif defined (PJ_M_POWERPC) || defined(__powerpc) || defined(__powerpc__) || \
@@ -259,7 +259,7 @@
 #   define PJ_M_NAME		"powerpc"
 #   define PJ_HAS_PENTIUM	0
 #   if !PJ_IS_LITTLE_ENDIAN && !PJ_IS_BIG_ENDIAN
-#   	error Endianness must be declared for this processor
+//#   	error Endianness must be declared for this processor
 #   endif
 
 #elif defined (PJ_M_NIOS2) || defined(__nios2) || defined(__nios2__) || \
@@ -275,7 +275,7 @@
 #   define PJ_IS_BIG_ENDIAN	0
 		
 #else
-#   error "Please specify target machine."
+//#   error "Please specify target machine."
 #endif
 
 /* Include size_t definition. */
@@ -674,12 +674,18 @@
 #else
     /* When FD_SETSIZE is not changeable, check if PJ_IOQUEUE_MAX_HANDLES
      * is lower than FD_SETSIZE value.
+     *
+     * Update: Not all ioqueue backends require this (such as epoll), so
+     * this check will be done on the ioqueue implementation itself, such as
+     * ioqueue select.
      */
+/*
 #   ifdef FD_SETSIZE
 #	if PJ_IOQUEUE_MAX_HANDLES > FD_SETSIZE
 #	    error "PJ_IOQUEUE_MAX_HANDLES is greater than FD_SETSIZE"
 #	endif
 #   endif
+*/
 #endif
 
 
@@ -1159,15 +1165,15 @@
 #endif
 
 #if !defined(PJ_HAS_PENTIUM)
-#  error "PJ_HAS_PENTIUM is not defined!"
+//#  error "PJ_HAS_PENTIUM is not defined!"
 #endif
 
 #if !defined(PJ_IS_LITTLE_ENDIAN)
-#  error "PJ_IS_LITTLE_ENDIAN is not defined!"
+//#  error "PJ_IS_LITTLE_ENDIAN is not defined!"
 #endif
 
 #if !defined(PJ_IS_BIG_ENDIAN)
-#  error "PJ_IS_BIG_ENDIAN is not defined!"
+//#  error "PJ_IS_BIG_ENDIAN is not defined!"
 #endif
 
 #if !defined(PJ_EMULATE_RWMUTEX)
@@ -1188,7 +1194,7 @@ PJ_BEGIN_DECL
 #define PJ_VERSION_NUM_MAJOR	2
 
 /** PJLIB version minor number. */
-#define PJ_VERSION_NUM_MINOR	3
+#define PJ_VERSION_NUM_MINOR	4
 
 /** PJLIB version revision number. */
 #define PJ_VERSION_NUM_REV	0
